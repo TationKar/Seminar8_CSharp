@@ -67,3 +67,4 @@ static void rndArr(int[,] arr)
             Console.WriteLine("-------------------------------");
             showArr(swapArr( arr));
             Console.ReadLine();
+

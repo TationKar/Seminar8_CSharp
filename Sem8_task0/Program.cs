@@ -58,9 +58,9 @@ static void rndArr(int[,] arr)
             arr = newArr;
         }
             Console.Write("Введите количество строк: ");
-            int rows = int.Parse(Console.ReadLine());
+            int rows = int.Parse(Console.ReadLine()!);
             Console.Write("Введите количество элементов в строке: ");
-            int cols = int.Parse(Console.ReadLine());
+            int cols = int.Parse(Console.ReadLine()!);
             int[,] arr = new int[rows, cols];
 
             rndArr(arr);
