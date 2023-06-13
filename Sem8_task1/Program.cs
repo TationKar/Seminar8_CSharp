@@ -1,15 +1,18 @@
-﻿/**Задача 53:**Задайте двумерный массив.
-Напишите программу, которая поменяет местами первую и последнюю строку массива.
-Например, задан массив:
-1 4 7 2
-5 9 2 3
-8 4 2 4
+﻿// **Задача 55:**Задайте двумерный массив.
+// Напишите программу, которая заменяет строки на столбцы.
+// В случае, если это невозможно, программа должна вывести сообщение для пользователя.
+// Например, задан массив:
 
-В итоге получается вот такой массив:
-8 4 2 4
-5 9 2 3
-1 4 7 2*/
-Console.Clear();
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+// 5 2 6 7
+
+// В итоге получается вот такой массив:
+// 1 5 8 5
+// 4 9 4 2
+// 7 2 2 6
+// 2 3 4 7
 static void rndArr(int[,] arr)
         {
             Random rnd = new Random();
@@ -34,38 +37,33 @@ static void rndArr(int[,] arr)
             }
         }
 
-        static void swapArr(ref int[,] arr)
+        static int[,] swapArr(int[,] arr)
         {
-            int[,] newArr = new int[arr.GetLength(0),arr.GetLength(1)];
+            int[,] newArr = new int[arr.GetLength(1),arr.GetLength(0)];
 
-            for(int i = 0; i < arr.GetLength(0);i++)
+            for(int i = 0; i < arr.GetLength(1);i++)
             {
-                for(int j = 0; j < arr.GetLength(1);j++)
+                for(int j = 0; j < arr.GetLength(0);j++)
                 {
-                    if (i == 0)
-                    {                        
-                        newArr[i,j] = arr[arr.GetLength(0) - 1,j];
-                        continue;
-                    }
-                    if (i == arr.GetLength(0) - 1)
-                    {
-                        newArr[i, j] = arr[0, j];
-                        continue;
-                    }
-                    newArr[i, j] = arr[i, j];
+                    newArr[i,j] = arr[j,i];
                 }
             }
-            arr = newArr;
+            return newArr;
         }
+
             Console.Write("Введите количество строк: ");
             int rows = int.Parse(Console.ReadLine());
+
             Console.Write("Введите количество элементов в строке: ");
             int cols = int.Parse(Console.ReadLine());
+
             int[,] arr = new int[rows, cols];
 
             rndArr(arr);
+
             showArr(arr);
-            swapArr(ref arr);
+
+            
             Console.WriteLine("-------------------------------");
-            showArr(arr);
+            showArr(swapArr( arr));
             Console.ReadLine();
